@@ -1,0 +1,8 @@
+flask 
+flask-sqlalchemy 
+beautifulsoup4 
+requests
+pydub
+streamlit
+pandas
+altair
