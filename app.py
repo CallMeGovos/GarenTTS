@@ -16,8 +16,8 @@ st.set_page_config(
 base_dir = os.getcwd()
 
 # Đường dẫn đến thư mục chứa dataset và file metadata
-BASE_DATA_DIR  = os.path.join(base_dir, "Data_processed")
-METADATA_FILE = os.path.join(base_dir, "Data_processed", "metadata.csv")
+BASE_DATA_DIR  = os.path.join(base_dir, "Data")
+METADATA_FILE = os.path.join(base_dir, "Data", "metadata.csv")
 # AUDIO_FILES_SUBDIR = "" # Nếu audio nằm trong thư mục con của BASE_DATA_DIR
                          # Trong trường hợp này, audio và metadata.csv cùng cấp trong BASE_DATA_DIR
 
