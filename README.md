@@ -16,10 +16,24 @@ To run this project locally, you need:
 - Python 3.10 or higher
 - A machine with at least 8GB RAM (GPU recommended for faster inference)
 - Dependencies listed in `requirements.txt`
-- Pre-trained model and reference audio file (see [Setup](#setup))
 
 ## Setup
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/CallMeGovos/GarenTTS.git
-   cd tts-project
+   cd GarenTTS
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+3. **Download model**:
+   Download epoch_2nd_00049.pth from [epoch_2nd_00049.pth](https://drive.google.com/drive/folders/1ez4TktS_nEU7NxJjN4D4aZnImOai6QUT).
+   Place in Models/GarenGodKing/.
+4. **Install espeak (for phonemizer)**:
+   Windows: Download and install espeak.
+   Linux/Mac:
+   ```bash
+   sudo apt-get install espeak  # Linux
+   brew install espeak         # Mac
+5. **Test**:
+   Open file tts_notebook.ipynb
+   Run All.
