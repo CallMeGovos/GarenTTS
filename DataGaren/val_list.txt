@@ -1,0 +1,25 @@
+0220.wav|A god's work is never done, not now, not ever.|1
+0221.wav|Fear not, for I will never truly leave your side.|1
+0222.wav|I have business to attend to, fight on in my name.|1
+0223.wav|This crown is a heavy burden, but for Demacia, I will bear it.|1
+0224.wav|The lion must return to his lambs.|1
+0225.wav|Glory awaits!|1
+0226.wav|Your god will not abandon you!|1
+0227.wav|I have returned!|1
+0228.wav|The God-King cannot die!|1
+0229.wav|I am reborn!|1
+0230.wav|My work is not complete.|1
+0231.wav|You dare taunt the God-King?! So be it...|1
+0232.wav|Wag that tongue while you can, soon enough I will cut it from your mouth.|1
+0233.wav|Demaglio? Demaglio?! How dare you slander our glorious kingdom?!|1
+0234.wav|Pledge your fealty, or perish.|1
+0235.wav|By law or by sword, your judgement shall be merciless.|1
+0236.wav|You stand in the presence of the God-King, kneel.|1
+0237.wav|Only a fool provokes a lion.|1
+0238.wav|You dare speak to a god? You are nothing.|1
+0239.wav|A god does not bother with blasphemers.|1
+0240.wav|A god cannot fall!|1
+0241.wav|The will of the gods!|1
+0242.wav|I stand for Demacia!|1
+0243.wav|Your king rallies!|1
+0244.wav|Divine power!|1

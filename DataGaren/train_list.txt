@@ -1,0 +1,219 @@
+0001.wav|Suppress all descent!|1
+0002.wav|Kneel!|1
+0003.wav|We are strong!|1
+0004.wav|I will fight for all eternity.|1
+0005.wav|The unjust shall be swept away!|1
+0006.wav|None challenge the God-King!|1
+0007.wav|You dare stand against me?!|1
+0008.wav|I will show no mercy!|1
+0009.wav|Our cause is just!|1
+0010.wav|Glory awaits!|1
+0011.wav|Apostate!|1
+0012.wav|You are allied against the throne!|1
+0013.wav|I judge you guilty!|1
+0014.wav|You are a fool to defy me!|1
+0015.wav|I will end this myself!|1
+0016.wav|Turn and face me!|1
+0017.wav|Demacia rises!|1
+0018.wav|You shall know my wrath!|1
+0019.wav|Into the light, I command it!|1
+0020.wav|Witness the fury of a god!|1
+0021.wav|You have been judged!|1
+0022.wav|We are the righteous!|1
+0023.wav|Witness the strength of my conviction!|1
+0024.wav|Fall before me!|1
+0025.wav|For Demacia!|1
+0026.wav|Righteous.|1
+0027.wav|I will be invincible.|1
+0028.wav|With this, I will deliver justice upon the wicked.|1
+0029.wav|I have need of these earthly treasures.|1
+0030.wav|With this, I will judge the world.|1
+0031.wav|Fit for a God-King.|1
+0032.wav|I consecrate this artefact in the name of Demacia.|1
+0033.wav|I have no need of idle riches.|1
+0034.wav|For great justice.|1
+0035.wav|A tool to guide my wrath.|1
+0036.wav|Garen groans in pain and perishes.|1
+0037.wav|Garen groans in pain and perishes.|1
+0038.wav|Demacia...|1
+0039.wav|My throne... remains...|1
+0040.wav|I renounce thee!|1
+0041.wav|Unworthy!|1
+0042.wav|Blasphemers!|1
+0043.wav|You dare?!|1
+0044.wav|Foul monsters!|1
+0045.wav|Suffer my wrath!|1
+0046.wav|Know my name!|1
+0047.wav|Demacia reigns!|1
+0048.wav|Unbelievers!|1
+0049.wav|Judgement has come!|1
+0050.wav|You are a petulant child moping among the unwashed masses.|1
+0051.wav|You still bear the scar of our last encounter, shall I add another?|1
+0052.wav|Come, dog, let us finally put you down.|1
+0053.wav|The moon is a fickle goddess, abandon her and worship me.|1
+0054.wav|Foul shadow, I shall banish all darkness!|1
+0055.wav|One day soon, this world will be cleansed of creatures like you.|1
+0056.wav|Demon of lust, your profane desires end now!|1
+0057.wav|The question is, are you worthy of me?|1
+0058.wav|Blasphemous filth, your lamp can't hold a candle to me!|1
+0059.wav|Interloper, I am all the light this world needs.|1
+0060.wav|Though it brings me no joy, I must kiss y- uh, smite you, I must smite you. You know what, never mind.|1
+0061.wav|False gods of death, you shall pay for the lives unjustly stolen!|1
+0062.wav|False idol, I alone wield the strength of a god!|1
+0063.wav|Who dares praise the sun? All must worship me!|1
+0064.wav|A goddess, of guns? What foolishness is this?!|1
+0065.wav|Vessel of false gods, lay down your weapons and accept judgement.|1
+0066.wav|Divine ancestor, why do you stand against me?|1
+0067.wav|Demon of excess, no dread bargain shall ever tempt my people!|1
+0068.wav|A foul demon if ever there was one.|1
+0069.wav|Ancient evil, I will cast you out!|1
+0070.wav|Turn back, gravedigger, Demacia will never fall to an army of ghosts.|1
+0071.wav|Please stop, I've spent untold millennia perfecting the art of jokes, and that was not a joke.|1
+0072.wav|Very funny, usurper, you are very funny.|1
+0073.wav|Knock, knock. Who's there? The God-King! That's me... I'm the God-King in the joke.|1
+0074.wav|What do I call you, lion? The God-Cat? Garen Jr.? Actually, that's not bad.|1
+0075.wav|A feast for the lion.|1
+0076.wav|Another creature of the old world slain in my name.|1
+0077.wav|Be still, monster.|1
+0078.wav|Even the beasts shall be judged.|1
+0079.wav|No mere beast can stand against the God-King.|1
+0080.wav|Fear the fury of Demacia.|1
+0081.wav|No shelter for the unbelievers.|1
+0082.wav|Their structures are brittle, and our faith is strong.|1
+0083.wav|They will find no sanctuary here.|1
+0084.wav|There is no safe harbor from the hand of god.|1
+0085.wav|Leave no trace of their evil.|1
+0086.wav|Your prayers have been answered.|1
+0087.wav|Resistance is sacrilege.|1
+0088.wav|You dared to defy me.|1
+0089.wav|This king suffers no fools.|1
+0090.wav|Begone, villain.|1
+0091.wav|You are condemned!|1
+0092.wav|Fealty or death.|1
+0093.wav|Nothing threatens Demacia and lives.|1
+0094.wav|Speak no more.|1
+0095.wav|Menace my throne no further.|1
+0096.wav|The lion feasts.|1
+0097.wav|Condemned to darkness!|1
+0098.wav|We are just, we are strong!|1
+0099.wav|Look upon the face of your god!|1
+0100.wav|Nothing shall remain!|1
+0101.wav|All who defy me will share your fate.|1
+0102.wav|Judgement executed!|1
+0103.wav|Purified.|1
+0104.wav|Your God-King stands triumphant.|1
+0105.wav|Your heresy has been rewarded.|1
+0106.wav|Your evil darkens the world no more.|1
+0107.wav|Did you think you could avoid my sight?|1
+0108.wav|Flee before the lion.|1
+0109.wav|A righteous judgement.|1
+0110.wav|Order has been restored.|1
+0111.wav|Justice at any cost.|1
+0112.wav|All shall kneel before me.|1
+0113.wav|Lest ye be judged!|1
+0114.wav|Dust to dust!|1
+0115.wav|A single strike!|1
+0116.wav|In death, salvation.|1
+0117.wav|Another evil prostrated before me.|1
+0118.wav|You will serve as a lesson!|1
+0119.wav|Lesser gods serve at my pleasure, remember your place.|1
+0120.wav|What are wolves to a lion?|1
+0121.wav|Is endless war truly your desire? I offer order, I offer unity.|1
+0122.wav|The many, should serve the one, Darius. You will learn.|1
+0123.wav|A God-King cannot be tempted, not even a little... not even right now...|1
+0124.wav|For serving the cause of good, I will refrain from smiting you into dust! You are welcome for this honor... sister.|1
+0125.wav|I will finish this fight, Darius. Once, and forever.|1
+0126.wav|Anarchy is at our doors! Crush its champion, and slaughter its prophets!|1
+0127.wav|The power of the one.|1
+0128.wav|My will be done.|1
+0129.wav|For my people, for Demacia, forever!|1
+0130.wav|The heart of a lion, the might of a god!|1
+0131.wav|They shall know my name.|1
+0132.wav|War has come to us, nothing will stay my hand!|1
+0133.wav|All living things shall know the might of the God-King.|1
+0134.wav|By divine providence, they will know justice.|1
+0135.wav|All who threaten Demacia, will be annihliated!|1
+0136.wav|We will root out villainy in every corner! We are just, we are strong!|1
+0137.wav|I will judge the unbelievers and cast them into the light.|1
+0138.wav|The lion is a regal creature, born to rule alone.|1
+0139.wav|There is only one constant in this world, Demacia.|1
+0140.wav|I alone will fight back each new darkness!|1
+0141.wav|Doubt not your king, salvation is at hand!|1
+0142.wav|Unity or chaos. Loyalty or destruction!|1
+0143.wav|Our faith is our shield, and I am our faith.|1
+0144.wav|I am the great father to all mankind.|1
+0145.wav|Hallowed be my name.|1
+0146.wav|The lion walks among men.|1
+0147.wav|A lion is made from the wolves he has eaten.|1
+0148.wav|My kingdom stands eternal.|1
+0149.wav|My vision is clear, my will absolute.|1
+0150.wav|I am the voice of history.|1
+0151.wav|Every soul is my subject.|1
+0152.wav|I am truth, I am reason.|1
+0153.wav|Serve me, and know glory.|1
+0154.wav|Corruption is the seed of our undoing.|1
+0155.wav|Serve Demacia, and serve at my side.|1
+0156.wav|I will shape this world in my image.|1
+0157.wav|A king never falters.|1
+0158.wav|Nothing will stop the march of my kingdom.|1
+0159.wav|Justice for all mankind.|1
+0160.wav|Fear nothing, trust in me.|1
+0161.wav|This world will know order.|1
+0162.wav|Behold, a living god.|1
+0163.wav|A righteous king for a righteous people.|1
+0164.wav|The eyes of the lion are always open.|1
+0165.wav|I shall save them from themselves.|1
+0166.wav|Courage, conviction, faith.|1
+0167.wav|Wrath for the wicked, honor for the just.|1
+0168.wav|I will tame these lands, and all lands.|1
+0169.wav|Let no beast or shadow stand in my way.|1
+0170.wav|The earth itself shall bend to my will.|1
+0171.wav|Contrition will not save them.|1
+0172.wav|And this too falls under my domain.|1
+0173.wav|My kingdom awaits.|1
+0174.wav|All beasts bow to the lion.|1
+0175.wav|Faith in me shall be rewarded.|1
+0176.wav|I have come to save you.|1
+0177.wav|I am forever.|1
+0178.wav|My justice is absolute.|1
+0179.wav|We must cast back the wicked.|1
+0180.wav|I am Demacia.|1
+0181.wav|They thought they could kill a god?!|1
+0182.wav|Nothing will stand in my way.|1
+0183.wav|Demacia, I hear you!|1
+0184.wav|The cause renews me.|1
+0185.wav|Devotion restores me!|1
+0186.wav|Our crusade shall never end.|1
+0187.wav|I am healed.|1
+0188.wav|Faith shall deliver us.|1
+0189.wav|For Demacia!|1
+0190.wav|Silence, knave!|1
+0191.wav|I cast you out!|1
+0192.wav|You are forsaken!|1
+0193.wav|I am just!|1
+0194.wav|Crush them!|1
+0195.wav|Repent!|1
+0196.wav|Know my justice!|1
+0197.wav|Your end has come!|1
+0198.wav|I am god!|1
+0199.wav|The lion roars!|1
+0200.wav|You are judged!|1
+0201.wav|All creation!|1
+0202.wav|Bear witness!|1
+0203.wav|Divine justice!|1
+0204.wav|My power propels us to victory, advance!|1
+0205.wav|The enemy is weak, crush them in my name!|1
+0206.wav|Triumph is at hand, onward to salvation!|1
+0207.wav|Their formations crumble, we shall be victorious!|1
+0208.wav|The enemy flees before out might, let none escape!|1
+0209.wav|Would you let villainy win the day? Fight them back!|1
+0210.wav|Purify their darkness, your God-King commands it!|1
+0211.wav|We are the saviors of this world, and we will not fall!|1
+0212.wav|Fear no man or beast, know only the taste of victory!|1
+0213.wav|Do not lose hope, our judgement shall be swift and merciless!|1
+0214.wav|The God-King fights beside you, let nothing stand in your way.|1
+0215.wav|Cast aside your doubt, and eliminate all who oppose us!|1
+0216.wav|They fight well, but the God-King stands with you!|1
+0217.wav|They are strong, but we are stronger! Our purity will deliver us!|1
+0218.wav|Fear not our enemies, we fight for the cause of righteousness!|1
+0219.wav|My throne calls to me, wait for my return.|1
