@@ -26,14 +26,14 @@ To run this project locally, you need:
    ```bash
    pip install -r requirements.txt
 3. **Download model**:
-   Download epoch_2nd_00049.pth from [epoch_2nd_00049.pth](https://drive.google.com/drive/folders/1ez4TktS_nEU7NxJjN4D4aZnImOai6QUT).
-   Place in Models/GarenGodKing/.
+   - Download epoch_2nd_00049.pth from [epoch_2nd_00049.pth](https://drive.google.com/drive/folders/1ez4TktS_nEU7NxJjN4D4aZnImOai6QUT).
+   - Place in Models/GarenGodKing/.
 4. **Install espeak (for phonemizer)**:
-   Windows: Download and install espeak.
-   Linux/Mac:
+   - Windows: Download and install espeak.
+   - Linux/Mac:
    ```bash
    sudo apt-get install espeak  # Linux
    brew install espeak         # Mac
 5. **Test**:
-   Open file tts_notebook.ipynb
-   Run All.
+   - Open file tts_notebook.ipynb
+   - Run All.
