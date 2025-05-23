@@ -4,7 +4,7 @@ import os
 import io
 import zipfile
 import altair as alt
-
+import requests
 
 # --- CẤU HÌNH TRANG VÀ BIẾN TOÀN CỤC ---
 st.set_page_config(
@@ -21,7 +21,7 @@ METADATA_FILE = os.path.join(base_dir, "DataGaren", "wavs","metadata.csv")
 # AUDIO_FILES_SUBDIR = "" # Nếu audio nằm trong thư mục con của BASE_DATA_DIR
                          # Trong trường hợp này, audio và metadata.csv cùng cấp trong BASE_DATA_DIR
 
-@st.cache_data # Cache để không phải đọc file CSV mỗi lần
+@st.cache_data # Cache để không phải đọc file CSV mỗi lần vào
 def load_metadata():
     """Tải metadata từ file CSV và kiểm tra sự tồn tại của file audio."""
     if not os.path.exists(METADATA_FILE):
@@ -84,7 +84,7 @@ st.sidebar.title("👑 Garen God-King")
 st.sidebar.markdown("Dữ liệu cho AI Voice Cloning")
 st.sidebar.markdown("---")
 
-page_options = ["Trang Chủ", "Xem Dữ Liệu", "Thống Kê Dữ Liệu", "Tải Dữ Liệu"]
+page_options = ["Trang Chủ", "Xem Dữ Liệu", "Thống Kê Dữ Liệu", "Tải Dữ Liệu", "Tạo Audio"]
 selected_page = st.sidebar.radio("Điều hướng:", page_options)
 st.sidebar.markdown("---")
 
@@ -240,8 +240,44 @@ elif selected_page == "Tải Dữ Liệu":
             st.info("Không có file audio nào tồn tại để tạo file ZIP.")
     else:
         st.info(f"Chưa có dữ liệu. Hãy chạy script crawl để tạo file `{METADATA_FILE}`.")
+elif selected_page == "Tạo Audio":
+    st.title("🎤 Tạo Audio")
+    st.markdown("""
+    Chào mừng đến với trang tạo audio sử dụng Garen God-King!  
+    Nhập văn bản bên dưới và nhấn "Tạo Audio" để nghe giọng nói được tạo bởi mô hình StyleTTS2.
+    """)
 
+    # Text input field
+    text_input = st.text_area("Nhập văn bản để tạo giọng nói:", "I am Garen, the God-King!", height=100)
+
+    # Generate audio button
+    if st.button("Tạo Audio"):
+        if text_input.strip():
+            try:
+                # Send request to local Flask API (tts.py)
+                with st.spinner("Đang tạo audio..."):
+                    response = requests.post(
+                        "http://localhost:5000/generate_wav",
+                        json={"text": text_input},
+                        timeout=60  # Increased timeout for GPU processing
+                    )
+
+                if response.status_code == 200:
+                    # Display success message
+                    st.success("Đã tạo audio thành công!")
+
+                    # Display audio player
+                    audio_data = io.BytesIO(response.content)
+                    st.audio(audio_data, format="audio/wav", start_time=0)
+                else:
+                    error_msg = response.json().get("error", "Lỗi không xác định từ API.")
+                    st.error(f"Lỗi khi tạo audio: {error_msg}")
+            except requests.exceptions.RequestException as e:
+                st.error(f"Lỗi kết nối đến API TTS: {str(e)}")
+                st.warning("Hãy đảm bảo rằng Flask API (`tts.py`) đang chạy trên máy của bạn tại `http://localhost:5000`. Mở một terminal và chạy lệnh `python tts.py`.")
+        else:
+            st.warning("Vui lòng nhập văn bản trước khi tạo audio.")
 # --- FOOTER ---
 st.sidebar.markdown("---")
 st.sidebar.markdown(f"© {pd.Timestamp('today').year} - Báo cáo cuối kì KTLT&PTDL 2025")
-st.sidebar.markdown("SVTH: Trương Quốc Khánh-Nguyễn Trọng Tín-Nguyễn Đức Quang")
+st.sidebar.markdown("SVTH: Trương Quốc Khánh - Nguyễn Trọng Tín - Nguyễn Đức Quang")

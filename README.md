@@ -37,3 +37,94 @@ To run this project locally, you need:
 5. **Test**:
    - Open file tts_notebook.ipynb
    - Run All.
+
+## Running the Application
+1. **Start the Flask API**:
+   - Open a terminal and run:
+     ```bash
+     python tts.py
+     ```
+   - The API runs at `http://localhost:5000`. Ensure port 5000 is open in your firewall:
+     - Windows: Open **Windows Defender Firewall** > **Advanced Settings** > **Inbound Rules** > Create rule for port 5000 (TCP).
+
+2. **Start the Streamlit app**:
+   - Open a second terminal and run:
+     ```bash
+     streamlit run app.py
+     ```
+   - This starts a web server at `http://localhost:8501`.
+
+3. **Interact with the app**:
+   - Open `http://localhost:8501` in your browser.
+   - Navigate to the "Tạo Audio" page.
+   - Enter text (e.g., "I am Garen.") in the input field.
+   - Click "Tạo Audio" to generate and play the audio.
+
+## Notes
+- The Flask API (`tts.py`) must be running before starting the Streamlit app.
+- TTS processing is GPU-accelerated for faster inference (typically 1-2 seconds per sentence). CPU fallback is available but slower.
+- Ensure `epoch_2nd_00049.pth`, `config_ft.yml`, and `0060.wav` are in the correct directories (`Models/GarenGodKing/` and `DataGaren/wavs/`).
+- Large files are hosted on Hugging Face/Google Drive to keep the repository lightweight.
+
+## Project Structure
+```
+GarenTTS/
+├── app.py                   # Streamlit app
+├── tts.py                   # Flask API with TTS logic
+├── requirements.txt         # Dependencies
+├── Models/
+│   ├── GarenGodKing/
+│   │   ├── config_ft.yml    # Model configuration
+│   │   ├── epoch_2nd_00049.pth  # Model weights
+├── DataGaren/
+│   ├── wavs/
+│   │   ├── 0060.wav         # Reference audio
+├── Modules/
+│   ├── diffusion/
+│   │   ├── sampler.py       # Diffusion sampler
+├── Utils/
+│   ├── PLBERT/
+│   │   ├── util.py          # BERT utilities
+├── models.py                # Model definitions
+├── utils.py                 # Utility functions
+├── text_utils.py            # Text processing
+├── README.md                # This file
+```
+
+## Backup Instructions
+To prevent data loss (e.g., from `git push -f`):
+1. **GitHub**:
+   ```bash
+   git pull origin main  # Sync before pushing
+   git add .
+   git commit -m "Backup changes"
+   git push origin main
+   ```
+2. **Hugging Face** (for large files):
+   ```bash
+   git lfs install
+   git clone https://huggingface.co/CallMeGovos/GarenTTS_Models
+   cd GarenTTS_Models
+   cp path/to/epoch_2nd_00049.pth .
+   cp path/to/0060.wav .
+   git add .
+   git commit -m "Backup model and audio"
+   git push
+   ```
+3. **Google Drive**:
+   ```bash
+   xcopy G:\Project\GarenTTS G:\GarenTTS_Backup /E /H /C /I
+   ```
+   Upload `GarenTTS_Backup` to Google Drive.
+
+## Future Improvements
+- Optimize TTS for lower latency on GPU.
+- Support multiple languages and voices.
+- Add voice customization options in the Streamlit app.
+
+## Acknowledgments
+- Built using [StyleTTS2](https://github.com/yl4579/StyleTTS2).
+- Libraries: `torch`, `librosa`, `phonemizer`, `streamlit`, `flask`.
+
+## Contact
+For questions, contact [quockhanh2002bd@gmail.com](quockhanh2002bd@gmail.com) or open an issue on GitHub.

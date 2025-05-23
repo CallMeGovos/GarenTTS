@@ -14,7 +14,6 @@ munch
 torch
 pydub
 pyyaml
-librosa
 nltk
 matplotlib
 accelerate
