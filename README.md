@@ -83,6 +83,8 @@ GarenTTS/
 │   ├── diffusion/
 │   │   ├── sampler.py       # Diffusion sampler
 ├── Utils/
+│   ├── ASR/
+│   │   ├── models.py        # Contains ASRCNN
 │   ├── PLBERT/
 │   │   ├── util.py          # BERT utilities
 ├── models.py                # Model definitions
