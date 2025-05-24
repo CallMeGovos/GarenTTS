@@ -4,8 +4,8 @@ import sys
 project_root = os.path.dirname(__file__)
 styletts2_dir = os.path.join(project_root, 'StyleTTS2')
 
-sys.path.insert(0, project_root)      
-sys.path.insert(0, styletts2_dir)     
+sys.path.insert(0, project_root)
+sys.path.insert(0, styletts2_dir)
 os.chdir(styletts2_dir)
 import torch
 import soundfile as sf
@@ -20,6 +20,8 @@ from phonemizer.backend import EspeakBackend
 from torch import nn
 import torch.nn.functional as F
 import torchaudio
+from flask_cors import CORS
+import traceback
 
 from StyleTTS2.models import *
 from StyleTTS2.utils import *
@@ -27,25 +29,22 @@ from StyleTTS2.text_utils import TextCleaner
 from StyleTTS2.Modules.diffusion.sampler import DiffusionSampler, ADPM2Sampler, KarrasSchedule
 
 app = Flask(__name__)
+CORS(app)
 
-# Set seeds for reproducibility
 torch.manual_seed(0)
 torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.deterministic = True
 np.random.seed(0)
 
-# Initialize text cleaner and phonemizer
 textcleaner = TextCleaner()
 global_phonemizer = EspeakBackend(language='en-us', preserve_punctuation=True, with_stress=True)
 
-# Mel-spectrogram transform
 to_mel = torchaudio.transforms.MelSpectrogram(n_mels=80, n_fft=2048, win_length=1200, hop_length=300)
 mean, std = -4, 4
 
 def length_to_mask(lengths):
     mask = torch.arange(lengths.max()).unsqueeze(0).expand(lengths.shape[0], -1).type_as(lengths)
-    mask = torch.gt(mask + 1, lengths.unsqueeze(1))
-    return mask
+    return torch.gt(mask + 1, lengths.unsqueeze(1))
 
 def preprocess(wave):
     wave_tensor = torch.from_numpy(wave).float()
@@ -58,18 +57,16 @@ def compute_style(audio, device, model):
     with torch.no_grad():
         ref_s = model['style_encoder'](mel_tensor.unsqueeze(1))
         ref_p = model['predictor_encoder'](mel_tensor.unsqueeze(1))
+    print(f"compute_style - ref_s shape: {ref_s.shape}, ref_p shape: {ref_p.shape}")
     return torch.cat([ref_s, ref_p], dim=1)
 
 def load_model(config_path, checkpoint_path):
-    """Load the model and its components."""
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"device: {device}")
+    print(f"Device: {device}")
 
-    # Load configuration
     with open(config_path, 'r', encoding='utf-8') as f:
         config = yaml.safe_load(f)
 
-    # Load pretrained ASR, F0, and BERT models
     ASR_config = config.get('ASR_config', False)
     ASR_path = config.get('ASR_path', False)
     text_aligner = load_ASR_models(ASR_path, ASR_config)
@@ -77,33 +74,26 @@ def load_model(config_path, checkpoint_path):
     F0_path = config.get('F0_path', False)
     pitch_extractor = load_F0_models(F0_path)
 
-    from StyleTTS2.Utils.PLBERT.util import load_plbert
+    from Utils.PLBERT.util import load_plbert
     BERT_path = config.get('PLBERT_dir', False)
     plbert = load_plbert(BERT_path)
 
-    # Build model
     model_params = recursive_munch(config['model_params'])
     model = build_model(model_params, text_aligner, pitch_extractor, plbert)
     model = {key: model[key].eval().to(device) for key in model}
 
-    # Load checkpoint
     params_whole = torch.load(checkpoint_path, map_location='cpu')
     params = params_whole['net']
     for key in model:
         if key in params:
-            print(f'{key} loaded')
             try:
                 model[key].load_state_dict(params[key])
             except:
                 from collections import OrderedDict
                 state_dict = params[key]
-                new_state_dict = OrderedDict()
-                for k, v in state_dict.items():
-                    name = k[7:]  # Remove `module.`
-                    new_state_dict[name] = v
+                new_state_dict = OrderedDict((k[7:], v) for k, v in state_dict.items())
                 model[key].load_state_dict(new_state_dict, strict=False)
 
-    # Initialize diffusion sampler
     sampler = DiffusionSampler(
         model['diffusion'].diffusion,
         sampler=ADPM2Sampler(),
@@ -114,12 +104,12 @@ def load_model(config_path, checkpoint_path):
     return model, device, sampler
 
 def inference(text, ref_s, model, device, sampler, alpha=0.9, beta=0.9, diffusion_steps=5, embedding_scale=1):
-    """Generate speech from text using the model."""
     text = text.strip()
     ps = global_phonemizer.phonemize([text])
     ps = word_tokenize(ps[0])
     ps = ' '.join(ps)
     tokens = textcleaner(ps)
+    print(f"inference - tokens length: {len(tokens)}")
     tokens.insert(0, 0)
     tokens = torch.LongTensor(tokens).to(device).unsqueeze(0)
 
@@ -160,7 +150,7 @@ def inference(text, ref_s, model, device, sampler, alpha=0.9, beta=0.9, diffusio
         if model['decoder'].type == "hifigan":
             asr_new = torch.zeros_like(en)
             asr_new[:, :, 0] = en[:, :, 0]
-            asr_new[:, :, 1:] = en[:, :, 0:-1]
+            asr_new[:, :, 1:] = en[:, :, :-1]
             en = asr_new
 
         F0_pred, N_pred = model['predictor'].F0Ntrain(en, s)
@@ -169,18 +159,33 @@ def inference(text, ref_s, model, device, sampler, alpha=0.9, beta=0.9, diffusio
         if model['decoder'].type == "hifigan":
             asr_new = torch.zeros_like(asr)
             asr_new[:, :, 0] = asr[:, :, 0]
-            asr_new[:, :, 1:] = asr[:, :, 0:-1]
+            asr_new[:, :, 1:] = asr[:, :, :-1]
             asr = asr_new
 
         out = model['decoder'](asr, F0_pred, N_pred, ref.squeeze().unsqueeze(0))
-    return out.squeeze().cpu().numpy()[..., :-50]  # Remove weird pulse at the end
 
-# Load model at startup
+    wav = out.cpu().numpy()
+
+    if isinstance(wav, tuple):
+        wav = wav[0]
+
+    if wav.ndim == 3 and wav.shape[0] == 1:
+        wav = wav.squeeze(0).T
+    elif wav.ndim == 1:
+        wav = np.expand_dims(wav, axis=1)
+    elif wav.ndim == 2:
+        if wav.shape[0] < wav.shape[1]:
+            wav = wav.T
+
+    if wav.shape[0] > 50:
+        wav = wav[:-50, :]
+
+    return wav
+
 config_path = "Models/GarenGodKing/config_ft.yml"
 checkpoint_path = "Models/GarenGodKing/epoch_2nd_00049.pth"
 model, device, sampler = load_model(config_path, checkpoint_path)
 
-# Compute reference style at startup
 ref_audio_path = "DataGaren/wavs/0060.wav"
 ref_audio, _ = librosa.load(ref_audio_path, sr=24000)
 audio, index = librosa.effects.trim(ref_audio, top_db=30)
@@ -190,23 +195,25 @@ ref_s = compute_style(audio, device, model)
 
 @app.route('/generate_wav', methods=['POST'])
 def generate_wav():
-    """API endpoint to generate WAV from text."""
     try:
         text = request.json['text']
         if not text:
             return {"error": "No text provided"}, 400
 
-        # Generate audio
         wav = inference(text, ref_s, model, device, sampler)
 
-        # Save to temporary buffer
+        if not isinstance(wav, np.ndarray) or wav.ndim != 2 or wav.shape[0] == 0:
+            raise ValueError(f"Invalid wav format: type={type(wav)}, shape={wav.shape if isinstance(wav, np.ndarray) else 'N/A'}")
+
         import io
         buffer = io.BytesIO()
-        sf.write(wav, buffer, 24000, format='WAV')
+        sf.write(buffer, wav, 24000, format='WAV')
         buffer.seek(0)
 
         return Response(buffer.read(), mimetype='audio/wav')
     except Exception as e:
+        print(f"Error in generate_wav: {str(e)}")
+        print(traceback.format_exc())
         return {"error": str(e)}, 500
 
 if __name__ == "__main__":
