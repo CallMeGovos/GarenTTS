@@ -96,5 +96,5 @@ GarenTTS/
 - Built using [StyleTTS2](https://github.com/yl4579/StyleTTS2).
 - Libraries: `torch`, `librosa`, `phonemizer`, `streamlit`, `flask`.
 
-## Contact
-For questions, contact [quockhanh2002bd@gmail.com](quockhanh2002bd@gmail.com) or open an issue on GitHub.
+## Contact  
+For questions, contact [quockhanh2002bd@gmail.com](mailto:quockhanh2002bd@gmail.com) or open an issue on GitHub.
