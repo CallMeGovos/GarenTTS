@@ -257,7 +257,7 @@ elif selected_page == "Tạo Audio":
                 # Send request to local Flask API (tts.py)
                 with st.spinner("Đang tạo audio..."):
                     response = requests.post(
-                        "http://localhost:5000/generate_wav",
+                        "http://192.168.1.8:5000/generate_wav",
                         json={"text": text_input},
                         timeout=60  # Increased timeout for GPU processing
                     )

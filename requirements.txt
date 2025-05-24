@@ -24,3 +24,5 @@ tqdm
 typing
 typing-extensions
 git+https://github.com/resemble-ai/monotonic_align.git
+phonemizer
+flask-cors
