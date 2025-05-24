@@ -104,7 +104,7 @@ if selected_page == "Trang Chủ":
     st.title("Bộ Dữ Liệu Giọng Nói Garen God-King (LMHT)")
     st.markdown(f"""
     Chào mừng! Đây là giao diện khám phá bộ dữ liệu giọng nói của Garen God-King từ League of Legends,
-    được thu thập tự động từ nhóm em qua trang (https://wiki.leagueoflegends.com/en-us/League_of_Legends_Wiki).
+    được thu thập tự động từ nhóm em qua trang (https://wiki.leagueoflegends.com/en-us/Garen/Audio#God-King).
 
     **Mục đích:**
     * Cung cấp bộ dữ liệu gồm các file âm thanh (`.wav`) và transcript tương ứng.
