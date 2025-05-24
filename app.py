@@ -280,4 +280,4 @@ elif selected_page == "Tạo Audio":
 # --- FOOTER ---
 st.sidebar.markdown("---")
 st.sidebar.markdown(f"© {pd.Timestamp('today').year} - Báo cáo cuối kì KTLT&PTDL 2025")
-st.sidebar.markdown("SVTH: Trương Quốc Khánh - Nguyễn Trọng Tín")
+st.sidebar.markdown("SVTH: Trương Quốc Khánh - Nguyễn Trọng Tín - Nguyễn Đức Quang")
