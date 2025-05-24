@@ -1,4 +1,3 @@
-.gitignore
 env/
 Models/GarenGodKing/epoch_2nd_00049.pth
 StyleTTS2/
