@@ -1,3 +1,12 @@
+import os
+import sys
+
+project_root = os.path.dirname(__file__)
+styletts2_dir = os.path.join(project_root, 'StyleTTS2')
+
+sys.path.insert(0, project_root)      
+sys.path.insert(0, styletts2_dir)     
+os.chdir(styletts2_dir)
 import torch
 import soundfile as sf
 import librosa
@@ -11,10 +20,11 @@ from phonemizer.backend import EspeakBackend
 from torch import nn
 import torch.nn.functional as F
 import torchaudio
-from models import *
-from utils import *
-from text_utils import TextCleaner
-from Modules.diffusion.sampler import DiffusionSampler, ADPM2Sampler, KarrasSchedule
+
+from StyleTTS2.models import *
+from StyleTTS2.utils import *
+from StyleTTS2.text_utils import TextCleaner
+from StyleTTS2.Modules.diffusion.sampler import DiffusionSampler, ADPM2Sampler, KarrasSchedule
 
 app = Flask(__name__)
 
@@ -46,8 +56,8 @@ def preprocess(wave):
 def compute_style(audio, device, model):
     mel_tensor = preprocess(audio).to(device)
     with torch.no_grad():
-        ref_s = model.style_encoder(mel_tensor.unsqueeze(1))
-        ref_p = model.predictor_encoder(mel_tensor.unsqueeze(1))
+        ref_s = model['style_encoder'](mel_tensor.unsqueeze(1))
+        ref_p = model['predictor_encoder'](mel_tensor.unsqueeze(1))
     return torch.cat([ref_s, ref_p], dim=1)
 
 def load_model(config_path, checkpoint_path):
@@ -67,7 +77,7 @@ def load_model(config_path, checkpoint_path):
     F0_path = config.get('F0_path', False)
     pitch_extractor = load_F0_models(F0_path)
 
-    from Utils.PLBERT.util import load_plbert
+    from StyleTTS2.Utils.PLBERT.util import load_plbert
     BERT_path = config.get('PLBERT_dir', False)
     plbert = load_plbert(BERT_path)
 
@@ -176,7 +186,7 @@ ref_audio, _ = librosa.load(ref_audio_path, sr=24000)
 audio, index = librosa.effects.trim(ref_audio, top_db=30)
 if librosa.get_samplerate(ref_audio_path) != 24000:
     audio = librosa.resample(audio, orig_sr=librosa.get_samplerate(ref_audio_path), target_sr=24000)
-ref_s = compute_style(audio, device, model['style_encoder'])
+ref_s = compute_style(audio, device, model)
 
 @app.route('/generate_wav', methods=['POST'])
 def generate_wav():
@@ -200,4 +210,5 @@ def generate_wav():
         return {"error": str(e)}, 500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    os.chdir(project_root)
+    app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)

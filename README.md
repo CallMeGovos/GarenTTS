@@ -34,6 +34,11 @@ To run this project locally, you need:
    ```bash
    sudo apt-get install espeak  # Linux
    brew install espeak         # Mac
+5. **Git clone StyleTTS 2**:
+   ```bash
+   git clone https://github.com/yl4579/StyleTTS2.git
+   mv Models StyleTTS2/
+   mv DataGaren StyleTTS2/
 5. **Test**:
    - Open file tts_notebook.ipynb
    - Run All.
@@ -79,45 +84,8 @@ GarenTTS/
 ├── DataGaren/
 │   ├── wavs/
 │   │   ├── 0060.wav         # Reference audio
-├── Modules/
-│   ├── diffusion/
-│   │   ├── sampler.py       # Diffusion sampler
-├── Utils/
-│   ├── ASR/
-│   │   ├── models.py        # Contains ASRCNN
-│   ├── PLBERT/
-│   │   ├── util.py          # BERT utilities
-├── models.py                # Model definitions
-├── utils.py                 # Utility functions
-├── text_utils.py            # Text processing
 ├── README.md                # This file
 ```
-
-## Backup Instructions
-To prevent data loss (e.g., from `git push -f`):
-1. **GitHub**:
-   ```bash
-   git pull origin main  # Sync before pushing
-   git add .
-   git commit -m "Backup changes"
-   git push origin main
-   ```
-2. **Hugging Face** (for large files):
-   ```bash
-   git lfs install
-   git clone https://huggingface.co/CallMeGovos/GarenTTS_Models
-   cd GarenTTS_Models
-   cp path/to/epoch_2nd_00049.pth .
-   cp path/to/0060.wav .
-   git add .
-   git commit -m "Backup model and audio"
-   git push
-   ```
-3. **Google Drive**:
-   ```bash
-   xcopy G:\Project\GarenTTS G:\GarenTTS_Backup /E /H /C /I
-   ```
-   Upload `GarenTTS_Backup` to Google Drive.
 
 ## Future Improvements
 - Optimize TTS for lower latency on GPU.
